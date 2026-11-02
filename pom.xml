@@ -65,7 +65,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.22.1</version>
+            <version>1.23.0</version>
         </dependency>
         <dependency>
             <groupId>org.rocksdb</groupId>
@@ -75,12 +75,12 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
-            <version>2.3.26.Final</version>
+            <version>2.3.27.Final</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-cbor</artifactId>
-            <version>2.22.3</version>
+            <version>2.22.4</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.concurrent-trees</groupId>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>org.snakeyaml</groupId>
             <artifactId>snakeyaml-engine</artifactId>
-            <version>3.1.1</version>
+            <version>3.2</version>
         </dependency>
         <!--
           JavaScript for dashboard
@@ -118,7 +118,7 @@
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>vue</artifactId>
-            <version>3.5.43</version>
+            <version>3.5.44</version>
             <exclusions>
                 <!-- we only serve the prebuilt dist/vue.global.prod.js -->
                 <exclusion>
