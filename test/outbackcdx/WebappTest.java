@@ -1,6 +1,5 @@
 package outbackcdx;
 
-import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,6 +18,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Arrays.asList;
@@ -97,7 +97,7 @@ public class WebappTest {
 
         {
             String response = GET("/test", "q", "type:urlquery url:http%3A%2F%2Fnla.gov.au%2F limit:2 offset:0");
-            assertEquals(2, StringUtils.countMatches(response, "<result>"));
+            assertEquals(2, Pattern.compile("<result>").matcher(response).results().count());
             Document xml = parseXml(response);
             assertEquals("2", xpath(xml, "/wayback/request/numreturned").getTextContent());
             assertEquals("5", xpath(xml, "/wayback/request/numresults").getTextContent());
@@ -105,7 +105,7 @@ public class WebappTest {
 
         {
             String response = GET("/test", "q", "type:urlquery url:http%3A%2F%2Fnla.gov.au%2F", "count", "3", "start_page", "1");
-            assertEquals(3, StringUtils.countMatches(response, "<result>"));
+            assertEquals(3, Pattern.compile("<result>").matcher(response).results().count());
             assertTrue(response.contains("20050614070159"));
             Document xml = parseXml(response);
             assertEquals("3", xpath(xml, "/wayback/request/numreturned").getTextContent());
@@ -114,7 +114,7 @@ public class WebappTest {
 
         {
             String response = GET("/test", "q", "type:urlquery url:http%3A%2F%2Fnla.gov.au%2F", "count", "3", "start_page", "2");
-            assertEquals(2, StringUtils.countMatches(response, "<result>"));
+            assertEquals(2, Pattern.compile("<result>").matcher(response).results().count());
             assertFalse(response.contains("20050614070159"));
             Document xml = parseXml(response);
             assertEquals("2", xpath(xml, "/wayback/request/numreturned").getTextContent());
