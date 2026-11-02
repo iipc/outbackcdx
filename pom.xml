@@ -151,9 +151,16 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars.bower</groupId>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>redoc</artifactId>
-            <version>1.19.1</version>
+            <version>2.5.0</version>
+            <exclusions>
+                <!-- we only serve the self-contained standalone bundle -->
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
